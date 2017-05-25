@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Search NYTimes Film Reviews</title>
+
+    <script src="jquery-3.2.1.min.js"></script>
+    <script src="handlebars.js"></script>
+    <script type ="text/javascript" src="index.js"></script>
+  </head>
+
+  <body>
+    <h1>Type in the name of a movie and get back information and reviews from the New York Times!</h1>
+
+    <main id="main">
+      <input type="text" id="searchTerms">
+      <a href="#" id="search" onclick="getMovieInfo()">Search Movies</a>
+      <div class="errors"></div>
+    </main
+
+    <p>
+      
+    </p>
+      <div class="movies">
+
+      </div>
+
+
+
+
+
+<!--
+    <main id="main">
+      <div id="repositories"></div>
+    </main>
+    <script src="handlebars.js"></script>
+    <script src="index.js"></script>
+    <script id="movie-template" type="text/x-handlebars-template">
+      <ul>
+       {{#each this}}
+         <li>
+           <h2><a href="{{html_url}}">{{name}}</a></h2>
+           {{> authorPartial owner }}
+           <p>Watchers: {{watchers_count}}</p>
+           <p>Forks: {{forks_count}}</p>
+           <p>Issues: {{open_issues_count}}</p>
+         </li>
+        {{/each}}
+      </ul>
+    </script>
+    <script id="author-partial-template" type="text/x-handlebars-template">
+      <section>
+        <header><h4>Created By {{login}}</h4></header>
+        <img src="{{avatar_url}}" height="32" width="32">
+      </section>
+    </script> -->
+  </body>
+</html>
