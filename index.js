@@ -1,3 +1,20 @@
+
+
+function compileTemplate(templateScript, data){
+    return Handlebars.compile(templateScript)(data);
+}
+
+function parseResponse(data){
+    return data.results.map(function (movie) {
+        return {
+            title: movie.display_title,
+            description: movie.summary_short,
+            date: movie.publication_date
+        }
+    })
+}
+
+
 function displayError() {
   $('#errors').html("I'm sorry, there's been an error. Please try again.")
 }
@@ -12,11 +29,21 @@ function getMovieInfo() {
   $.ajax({
     url: url,
     method: 'GET',
-  }).done(function(result) {
-    // console.log(result);
-    var title = result.results[0].display_title
-    var byline= result.results[0].byline
-    $('.movies').html(result.results[0].display_title)
+  }).done(function(data) {
+     console.log(data);
+     movieTemplate = document.getElementById('movie-template').innerHTML
+     movieContainer = document.getElementsByClassName('widget-container')[0]
+    //
+
+
+    movieContainer.innerHTML = compileTemplate(movieTemplate, {movies: parseResponse(data)})
+    // // var title = result.results[0].display_title
+    // var byline = result.results[0].byline
+    //
+    //
+    //
+    //
+    // $('.movies').html(title)
 
 
 
@@ -28,24 +55,3 @@ function getMovieInfo() {
     throw err;
   });
 }
-
-
-
-
-
-
-
-
-
-//
-// function showMovies(event, data) {
-//   const repos = JSON.parse(this.responseText)
-//   const src = document.getElementById("repository-template").innerHTML
-//   const template = Handlebars.compile(src)
-//   const repoList = template(repos)
-//   document.getElementById("repositories").innerHTML = repoList
-// }
-//
-// document.addEventListener("DOMContentLoaded", function(event) {
-//   Handlebars.registerPartial("authorPartial", document.getElementById("author-partial-template").innerHTML)
-// });
