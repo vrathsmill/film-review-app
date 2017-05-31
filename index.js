@@ -9,7 +9,10 @@ function parseResponse(data){
         return {
             title: movie.display_title,
             description: movie.summary_short,
-            date: movie.publication_date
+            date: movie.publication_date,
+            link: movie.link.url,
+            imageUrl: movie.multimedia.src,
+            imageWidth: movie.multimedia.width,
         }
     })
 }
@@ -33,22 +36,10 @@ function getMovieInfo() {
      console.log(data);
      movieTemplate = document.getElementById('movie-template').innerHTML
      movieContainer = document.getElementsByClassName('widget-container')[0]
-    //
+    
 
 
     movieContainer.innerHTML = compileTemplate(movieTemplate, {movies: parseResponse(data)})
-    // // var title = result.results[0].display_title
-    // var byline = result.results[0].byline
-    //
-    //
-    //
-    //
-    // $('.movies').html(title)
-
-
-
-
-
 
 
   }).fail(function(err) {
