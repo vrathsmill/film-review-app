@@ -15,10 +15,19 @@ function parseResponse(data){
         }
       }
 
+      function fixQuotes(){
+        var str = movie.summary_short
+        return str.replace(/&quot;/g, '"')
+      }
+
+      function changeDate(){
+        var date = movie.publication_date
+        return date.slice(5) + "-" + date.slice(0,4)
+      }
         return {
             title: movie.display_title,
-            description: movie.summary_short,
-            date: movie.publication_date,
+            description: fixQuotes(),
+            date: changeDate(),
             link: movie.link.url,
             imageUrl: imageFixer()
         }
@@ -37,7 +46,7 @@ function getMovieInfo() {
   if (searchTerms.length > 0) {
     searchTerms
   } else {
-    return 
+    return
   }
 
 

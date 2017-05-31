@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <link rel="stylesheet" type="text/css" href="index.css">
     <title>Search NYTimes Film Reviews</title>
 
     <script src="jquery-3.2.1.min.js"></script>
@@ -9,14 +10,22 @@
   </head>
 
   <body>
+
+    <div class="bodyText" >
+      <div class="top">
+
+
+
     <h1>New York Times Film Search</h1>
-    <h3>Search the name of a movie, director, or actor and get back reviews from the New York Times!</h3>
+    <h3>Search the name of a movie, director, or actor. Get back reviews from the New York Times.</h3>
 
     <main id="main">
       <input type="text" id="searchTerms">
       <button id="search" onclick="getMovieInfo()">Search Reviews</button>
       <div class="errors"></div>
     </main
+  </div>
+    <div id=searchResults>
 
 
     <div class="container">
@@ -29,7 +38,7 @@
 
 
     {{#each movies}}
-            <h1>{{title}}</h1>
+            <h2>{{title}}</h2>
             {{#if description}}
             <p>Description: {{description}}</p>
             {{/if}}
@@ -37,8 +46,8 @@
 
               {{#if imageUrl}}
                 <img src="{{imageUrl}}" alt=""/>
-                {{/if}}
-            <a href="{{link}}">Review</a>
+                {{/if}} </br>
+            <h3><a href="{{link}}">Review of "{{title}}" </a></h3> </br>
 
         </div>
           {{/each}}
@@ -46,8 +55,8 @@
 
 
 
-
-
+    </div>
+    </div>
 
   </body>
 </html>
