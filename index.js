@@ -6,24 +6,42 @@ function compileTemplate(templateScript, data){
 
 function parseResponse(data){
     return data.results.map(function (movie) {
+
+    function imageFixer(){
+        if (movie.multimedia === null) {
+          return null
+        } else {
+          return movie.multimedia.src
+        }
+      }
+
         return {
             title: movie.display_title,
             description: movie.summary_short,
             date: movie.publication_date,
             link: movie.link.url,
-            imageUrl: movie.multimedia.src,
-            imageWidth: movie.multimedia.width,
+            imageUrl: imageFixer()
         }
     })
-}
+  }
 
 
 function displayError() {
   $('#errors').html("I'm sorry, there's been an error. Please try again.")
 }
 
+
 function getMovieInfo() {
   const searchTerms = $('#searchTerms').val()
+
+  if (searchTerms.length > 0) {
+    searchTerms
+  } else {
+    return 
+  }
+
+
+
   var url = "https://api.nytimes.com/svc/movies/v2/reviews/search.json";
   url += '?' + $.param({
     'api-key': "c7d0e0421f8c4d3b93857de57a155886",
@@ -36,7 +54,7 @@ function getMovieInfo() {
      console.log(data);
      movieTemplate = document.getElementById('movie-template').innerHTML
      movieContainer = document.getElementsByClassName('widget-container')[0]
-    
+
 
 
     movieContainer.innerHTML = compileTemplate(movieTemplate, {movies: parseResponse(data)})
