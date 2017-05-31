@@ -1,0 +1,24 @@
+.bodyText {
+  font-family: sans-serif;
+}
+
+h1 {
+  font-size: 50px;
+}
+.top{
+  text-align: center;
+}
+
+button {
+  font-weight: bold;
+    height: 30px;
+}
+
+#searchResults {
+  text-align: left;
+}
+
+#searchTerms{
+  height: 25px;
+  width: 300px;
+}
