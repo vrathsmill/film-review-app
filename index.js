@@ -24,12 +24,22 @@ function parseResponse(data){
         var date = movie.publication_date
         return date.slice(5) + "-" + date.slice(0,4)
       }
+
+      function criticsPick(){
+        if (movie.critics_pick === 1){
+          return true
+        } else {
+          return null
+        }
+      }
         return {
             title: movie.display_title,
             description: fixQuotes(),
             date: changeDate(),
             link: movie.link.url,
-            imageUrl: imageFixer()
+            imageUrl: imageFixer(),
+            rating: movie.mpaa_rating,
+            critics_pick: criticsPick()
         }
     })
   }

@@ -17,7 +17,7 @@
 
 
     <h1>New York Times Film Search</h1>
-    <h3>Search the name of a movie, director, or actor. Get back reviews from the New York Times.</h3>
+    <h3>Type the name of a movie, director, or actor. Get back reviews from the New York Times.</h3>
 
     <main id="main">
       <input type="text" id="searchTerms">
@@ -40,10 +40,15 @@
     {{#each movies}}
             <h2>{{title}}</h2>
             {{#if description}}
-            <p>Description: {{description}}</p>
+            <p>{{description}}</p>
+            {{/if}}
+            {{#if critics_pick}}
+              <p><strong><font color="#FFE700">&#10003</font> Critics Pick </strong></p>
             {{/if}}
             <p>Publication Date: {{date}}</p>
-
+            {{#if rating}}
+            <p>Rating: {{rating}}</p>
+            {{/if}}
               {{#if imageUrl}}
                 <img src="{{imageUrl}}" alt=""/>
                 {{/if}} </br>
