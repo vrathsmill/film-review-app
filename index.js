@@ -7,6 +7,7 @@ function compileTemplate(templateScript, data){
 function parseResponse(data){
     return data.results.map(function (movie) {
 
+
     function imageFixer(){
         if (movie.multimedia === null) {
           return null
@@ -83,6 +84,7 @@ function getMovieInfo() {
     method: 'GET',
   }).done(function(data) {
      console.log(data);
+
      movieTemplate = document.getElementById('movie-template').innerHTML
      movieContainer = document.getElementsByClassName('widget-container')[0]
 
