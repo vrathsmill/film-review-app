@@ -17,7 +17,19 @@ function parseResponse(data){
 
       function fixQuotes(){
         var str = movie.summary_short
-        return str.replace(/&quot;/g, '"')
+        str = str.replace(/&quot;/g, '"')
+
+        if (str.indexOf("&#8217;") > -1){
+          str = str.replace("&#8217;", "'")
+        }
+
+        if (str.indexOf("&#8220;") > -1){
+          str = str.replace("&#8220;",  "'")
+        }
+        if (str.indexOf("&#8221;") > -1){
+          str = str.replace("&#8221;",  "'")
+        }
+        return str
       }
 
       function changeDate(){
