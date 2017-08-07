@@ -8,6 +8,7 @@ function parseResponse(data){
     return data.results.map(function (movie) {
 
 
+
     function imageFixer(){
         if (movie.multimedia === null) {
           return null
@@ -19,21 +20,22 @@ function parseResponse(data){
       function fixQuotes(){
         var str = movie.summary_short
         str = str.replace(/&quot;/g, '"')
-        str = str.replace("&#8217;", "'")
-        str = str.replace("&#8220;",  "'")
-        str = str.replace("&#8221;",  "'")
+
+        if (str.indexOf("&#8217;") > -1){
+          str = str.replace("&#8217;", "'")
+        }
+
+        if (str.indexOf("&#8220;") > -1){
+          str = str.replace("&#8220;",  "'")
+        }
+        if (str.indexOf("&#8221;") > -1){
+          str = str.replace("&#8221;",  "'")
+        }
+
+        if (str.indexOf("&#233;") > -1){
+          str = str.replace("&#233;",  "e")
+        }
         return str
-        // if (str.indexOf("&#8217;") > -1){
-        //   str = str.replace("&#8217;", "'")
-        // }
-        //
-        // if (str.indexOf("&#8220;") > -1){
-        //   str = str.replace("&#8220;",  "'")
-        // }
-        // if (str.indexOf("&#8221;") > -1){
-        //   str = str.replace("&#8221;",  "'")
-        // }
-        // return str
       }
 
       function changeDate(){
