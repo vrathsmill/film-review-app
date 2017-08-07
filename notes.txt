@@ -1,2 +1,0 @@
-1. Add IMDB API search functionality
-2. If no results do something with that 
