@@ -57,7 +57,8 @@ function parseResponse(data){
             link: movie.link.url,
             imageUrl: imageFixer(),
             rating: movie.mpaa_rating,
-            critics_pick: criticsPick()
+            critics_pick: criticsPick(),
+            hi: "hi!!!!"
         }
     })
   }
